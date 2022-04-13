@@ -1,9 +1,43 @@
 body {
   text-align: center;
+  background-image: url("https://source.unsplash.com/1600x900/?city");
+}
+
+.hero {
+  background-color: white;
+}
+
+.city {
+  background-color: black;
+  background-color: rgba(18, 16, 16, 0.5);
+  border: black;
+  border-radius: 25px;
+}
+
+h4 {
+  background-color: white;
+}
+
+#input {
+  justify-content: center;
+  margin: 5px 15px 5px 15px;
+  width: 50%;
+  float: left;
+}
+.grid {
+  margin: 80px;
+  padding: 30px;
+}
+
+.card {
+  margin: 3px;
+}
+.search-button {
+  border-radius: 25px;
 }
 .button-like {
-  border: 2px solid $dark-gray;
-  background-color: blue;
+  border: 2px solid #8a8a8a;
+  background-color: white;
   text-decoration: none;
   padding: 1rem;
   position: relative;
@@ -11,63 +45,63 @@ body {
   text-align: center;
   display: inline-block;
   border-radius: 3rem;
-  color: $dark-gray;
+  color: #8a8a8a;
   transition: all ease 0.4s;
+}
 
-  span {
-    margin-left: 0.5rem;
-  }
+.button-like span {
+  margin-left: 0.5rem;
+}
 
-  .fa,
-  span {
-    transition: all ease 0.4s;
-  }
+.button-like .fa,
+.button-like span {
+  transition: all ease 0.4s;
+}
 
-  &:focus {
-    background-color: transparent;
+.button-like:focus {
+  background-color: transparent;
+}
 
-    .fa,
-    span {
-      color: $dark-gray;
-    }
-  }
+.button-like:focus .fa,
+.button-like:focus span {
+  color: #8a8a8a;
+}
 
-  &:hover {
-    border-color: $alert-color;
-    background-color: transparent;
+.button-like:hover {
+  border-color: #cc4b37;
+  background-color: transparent;
+}
 
-    .fa,
-    span {
-      color: $alert-color;
-    }
-  }
+.button-like:hover .fa,
+.button-like:hover span {
+  color: #cc4b37;
 }
 
 .liked {
-  background-color: $alert-color;
-  border-color: $alert-color;
+  background-color: #cc4b37;
+  border-color: #cc4b37;
+}
 
-  .fa,
-  span {
-    color: $white;
-  }
+.liked .fa,
+.liked span {
+  color: #fefefe;
+}
 
-  &:focus {
-    background-color: $alert-color;
+.liked:focus {
+  background-color: #cc4b37;
+}
 
-    .fa,
-    span {
-      color: $white;
-    }
-  }
+.liked:focus .fa,
+.liked:focus span {
+  color: #fefefe;
+}
 
-  &:hover {
-    background-color: $alert-color;
-    border-color: $alert-color;
+.liked:hover {
+  background-color: #cc4b37;
+  border-color: #cc4b37;
+}
 
-    .fa,
-    span {
-      color: $white;
-    }
-  }
+.liked:hover .fa,
+.liked:hover span {
+  color: #fefefe;
 }
