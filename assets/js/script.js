@@ -6,30 +6,32 @@ $(function () {
 
     function handleFormSubmit(event) {
         event.preventDefault();
-        console.log(event.target);
+        console.log(event.target.id);
+        var city = $(event.target).find("input").val();
+        getLocationData(city, event.target.id)
     }
     
     // Use the input city and fetch data from openweathermap
-    function getLocationData(city) {
+    function getLocationData(city, formId) {
         fetch("https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + weatherApiKey)
         .then(function(response) {
             return response.json()
         })
         .then(function(cityData) {
             // executer function to populate forecast weather data cards using the city lat and lon
-            getFutureWeather(cityData[0].lat, cityData[0].lon)
+            getFutureWeather(cityData[0].lat, cityData[0].lon, formId)
         })
     }
 
-    /*
     // Take the city lat and lon and fetch the forecast data for the next 5 days
-    function getFutureWeather(lat, lon) {
+    function getFutureWeather(lat, lon, formId) {
         fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + weatherApiKey + "&exclude=hourly,minutely&units=imperial")
         .then(function(response) {
             return response.json()
         })
         .then(function(futureData) {
             console.log(futureData);
+            console.log(formId);
             // Loop through the array of dates; start at 1 since 0 is the current date; end before 6 to limit to 5 days
             for (i = 0; i < 6; i++) {
                 // Create a card for each day
@@ -65,7 +67,7 @@ $(function () {
         })
     }
 
-    getLocationData(city); */
+    getLocationData(city); 
     form1.on("submit", handleFormSubmit);
 
     form2.on("submit", handleFormSubmit);
