@@ -20,7 +20,7 @@ h4 {
 
 #input {
   justify-content: center;
-  margin: 5px 15px 5px 15px;
+  margin: 5px 10px 5px 10px;
   width: 50%;
   float: left;
 }
@@ -31,6 +31,13 @@ h4 {
 
 .card {
   margin: 3px;
+}
+
+.favorites {
+  background-color: black;
+  background-color: rgba(18, 16, 16, 0.5);
+  border: black;
+  border-radius: 25px;
 }
 .search-button {
   border-radius: 25px;
