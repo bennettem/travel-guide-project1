@@ -5,8 +5,6 @@ $(function () {
   var exchangeRateApiKey = "8a34dc1b22d9b731f3e0d0da";
   var form1 = $("#form1");
   var form2 = $("#form2");
-  var liked1 = $("#liked1");
-  var liked2 = $("#liked2");
 
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -216,5 +214,5 @@ $(function () {
   }
 
   liked1.on("click", saveData);
-  liked2.on("click", saveData2);
+  liked2.on("click", saveData);
 });
