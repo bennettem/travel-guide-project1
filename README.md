@@ -19,5 +19,5 @@ https://bennettem.github.io/travel-guide-project1/
 
 # Contributors 
 - Jenna Anderson
-- Micheal Samm
+- Michael Samm
 - Emily Bennett 
