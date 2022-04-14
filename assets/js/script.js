@@ -13,7 +13,8 @@ $(function () {
     
     // Use the input city and fetch data from openweathermap
     function getLocationData(city, formId) {
-        $("#" + formId).siblings(".addData").empty();
+        $("#" + formId).siblings(".add-data-upper").empty();
+        $("#" + formId).siblings(".add-data-lower").empty();
         fetch("https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + weatherApiKey)
             .then(function(response) {
                 return response.json()
@@ -23,6 +24,15 @@ $(function () {
                 console.log(cityData);
                 getCountryData(cityData[0].country, formId)
                 getFutureWeather(cityData[0].lat, cityData[0].lon, formId)
+                var cityCard = $('<div>')
+                    .addClass("card");
+                var cityCardBody = $('<div>')
+                    .addClass("card-section");
+                var cityLabel = $('<h2>')
+                    .text(cityData[0].name + ", " + cityData[0].country)
+                cityCardBody.append(cityLabel)
+                cityCard.append(cityCardBody)
+                $("#" + formId).siblings(".add-data-upper").prepend(cityCard);
             })
             .catch(err => console.error(err)
         );
@@ -70,7 +80,7 @@ $(function () {
                     dayCard.append(dayCardHeader, dayCardBody);
 
                     // Add the card to the correct data element based on the selected form
-                    $("#" + formId).siblings(".addData").append(dayCard);
+                    $("#" + formId).siblings(".add-data-lower").append(dayCard);
                 }
                 // Set the current time for the selected city in a variable
                 var curTime = moment().utc().add(futureData.timezone_offset, 'seconds').format('MMM Do, YYYY, h:mm A')
@@ -91,7 +101,7 @@ $(function () {
                 // Build the card and add to the correct form data element
                 timeCardBody.append(timeEl);
                 timeCard.append(timeCardHeader, timeCardBody)
-                $("#" + formId).siblings(".addData").prepend(timeCard);
+                $("#" + formId).siblings(".add-data-upper").append(timeCard);
             })
             .catch(err => console.error(err)
         );
@@ -153,7 +163,7 @@ $(function () {
                 // Add the currecy card body and header to teh currency card
                 currencyCard.append(currencyCardHeader, currencyCardBody)
                 // Attach the currency card to the beginning of the data div related to the selected form
-                $("#" + formId).siblings(".addData").prepend(currencyCard);
+                $("#" + formId).siblings(".add-data-lower").prepend(currencyCard);
             })
             .catch(err => console.error(err)
         );
