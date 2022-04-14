@@ -1,6 +1,7 @@
 $(function () {
     var weatherApiKey = 'e0a6afee4ced0e5525c4a7c68c4ed596';
-    // var city = 'Milwaukee';
+    var geoDBApiKey = '04b70b2d63msh45674d1edc560a3p1163d0jsnfd2052c4c8cc';
+    var fixerApiKey = '3317c4f4904d5e38639dac4386b00621'
     var form1 = $("#form1");
     var form2 = $("#form2");
 
@@ -20,7 +21,10 @@ $(function () {
         })
         .then(function(cityData) {
             // executer function to populate forecast weather data cards using the city lat and lon
+            console.log(cityData);
+            console.log(cityData[0].country);
             getFutureWeather(cityData[0].lat, cityData[0].lon, formId)
+            getCountryData(cityData[0].country)
         })
     }
 
@@ -68,7 +72,40 @@ $(function () {
             }
         })
     }
-    // getLocationData(city); 
+    
+    function getCountryData(countryId) {
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com',
+                'X-RapidAPI-Key': '04b70b2d63msh45674d1edc560a3p1163d0jsnfd2052c4c8cc'
+            }
+        };
+        
+        fetch('https://wft-geo-db.p.rapidapi.com/v1/geo/countries/' + countryId + '', options)
+            .then(function(response) {
+                return response.json()
+            }) 
+            .then(function(countryDetails) {
+                console.log(countryDetails)
+                console.log(countryDetails.data.currencyCodes)
+                getCurrencyData(countryDetails.data.currencyCodes[0])
+            })
+            .catch(err => console.error(err)
+        );
+    }
+
+    function getCurrencyData(currencyCode) {
+        fetch('http://data.fixer.io/api/latest?access_key=' + fixerApiKey)
+            .then(function(response) {
+                return response.json()
+            })
+            .then(function(currencyData) {
+                console.log(currencyData)
+            })
+    }
+
+
     form1.on("submit", handleFormSubmit);
 
     form2.on("submit", handleFormSubmit);
