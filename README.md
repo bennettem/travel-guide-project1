@@ -12,7 +12,9 @@ what weather would be better for their trip! When a user clicks search two fetch
 - Foundation CSS Framework
 - -Moment
 
-# Screenshot of site
+
+![2022-04-14](https://user-images.githubusercontent.com/98507912/163494903-b2d5a5de-738f-4d36-af3a-1de512e9a790.png)
+
 
 # Deployed Link 
 
