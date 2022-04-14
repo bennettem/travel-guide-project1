@@ -2,6 +2,7 @@ $(function () {
     var weatherApiKey = 'e0a6afee4ced0e5525c4a7c68c4ed596';
     var geoDBApiKey = '04b70b2d63msh45674d1edc560a3p1163d0jsnfd2052c4c8cc';
     var fixerApiKey = '3317c4f4904d5e38639dac4386b00621'
+    var exchangeRateApiKey = '8a34dc1b22d9b731f3e0d0da';
     var form1 = $("#form1");
     var form2 = $("#form2");
 
@@ -21,7 +22,6 @@ $(function () {
             })
             .then(function(cityData) {
                 // executer function to populate forecast weather data cards using the city lat and lon
-                console.log(cityData);
                 getCountryData(cityData[0].country, formId)
                 getFutureWeather(cityData[0].lat, cityData[0].lon, formId)
                 var cityCard = $('<div>')
@@ -45,7 +45,6 @@ $(function () {
                 return response.json()
             })
             .then(function(futureData) {
-                console.log(futureData);
                 // Loop through the array of dates; start at 1 since 0 is the current date; end before 6 to limit to 5 days
                 for (i = 0; i < 6; i++) {
                     // Create a card for each day
@@ -123,7 +122,6 @@ $(function () {
                 return response.json()
             }) 
             .then(function(countryDetails) {
-                console.log(countryDetails)
                 // Pass the first currency code and the formID 
                 getCurrencyData(countryDetails.data.currencyCodes[0], formId)
             })
@@ -133,12 +131,11 @@ $(function () {
 
     // Using the currency code from geo-db and the formID, show exchange rates for the entered country
     function getCurrencyData(currencyCode, formId) {
-        fetch('http://data.fixer.io/api/latest?access_key=' + fixerApiKey + '&symbols=' + currencyCode)
+        fetch('https://api.exchangerate.host/latest/?base=USD&symbols=' + currencyCode)
             .then(function(response) {
                 return response.json()
             })
             .then(function(currencyData) {
-                console.log(currencyData)
                 // Declare the exchangeRate as found in the currency data
                 var exchangeRate = Object.values(currencyData.rates);
                 // Create the overall card for the Currency details
@@ -153,10 +150,10 @@ $(function () {
                     .addClass("card-section");
                 // Create the text stating the exchange rate from default (EUR) to the selected country
                 var currencyExchange = $('<p>')
-                    .text('EUR to ' + currencyCode + ': ' + exchangeRate);
+                    .text('USD to ' + currencyCode + ': ' + exchangeRate);
                 // Create text stating an example of the currency conversion
                 var currencyExample = $('<p>')
-                    .text('15 EUR = ' + (15 * exchangeRate).toFixed(2) + ' ' + currencyCode);
+                    .text('15 USD = ' + (15 * exchangeRate).toFixed(2) + ' ' + currencyCode);
 
                 // Add the exchange and example to the currency card body
                 currencyCardBody.append(currencyExchange, currencyExample)
