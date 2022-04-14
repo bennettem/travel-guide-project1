@@ -10,55 +10,71 @@
       integrity="sha256-1mcRjtAxlSjp6XJBgrBeeCORfBp/ppyX4tsvpQVCcpA= sha384-b5S5X654rX3Wo6z5/hnQ4GBmKuIJKMPwrJXn52ypjztlnDK2w9+9hSMBz/asy9Gw sha512-M1VveR2JGzpgWHb0elGqPTltHK3xbvu3Brgjfg4cg5ZNtyyApxw/45yHYsZ/rCVbfoO5MSZxB241wWq642jLtA=="
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <title>Where2</title>
   </head>
   <body>
-    <header>
-        <h1>Where2</h1>
+    <header class="hero">
+      <h1>Where2</h1>
     </header>
-      <div class="grid-container">
-        <div class="grid-x grid-padding-x">
-            <div class="card">
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x grid">
+        <div class="card city">
           <div class="medium-4 cell city1">
             <form id="form1">
-              <label
-                >Destination
-                <input type="text" placeholder="Enter a destination" />
+              <label>
+                <h4>Destination One</h4>
+                <input
+                  type="text"
+                  placeholder="Enter a destination"
+                  id="input"
+                />
               </label>
               <!--img src="assets/img/generic/rectangle-1.jpg">-->
-              <button type="submit" class="primary button expanded search-button">
+              <button type="submit" class="primary button search-button">
                 search
               </button>
-              <button class="button button-like">
-                  <i class="fa fa-heart"></i>
-                  <span>Like</span>
-                </button>
+              <div type="button" class="button button-like" id="liked">
+                <i class="fa fa-heart"></i>
+              </div>
             </form>
             <div class="addData"></div>
           </div>
         </div>
-        <div class="card">
+        <div class="card city">
           <div class="medium-4 cell city2">
             <form id="form2">
-              <label
-                >Destination
-                <input type="text" placeholder="Enter a destination" />
+              <label>
+                <h4>Destination Two</h4>
+                <input
+                  type="text"
+                  placeholder="Enter a destination"
+                  id="input"
+                />
               </label>
               <!--<img src="assets/img/generic/rectangle-1.jpg">-->
-              <button type="submit" class="primary button expanded search-button">
+              <button
+                type="submit"
+                class="primary primary button search-button"
+              >
                 search
               </button>
-              <button class="button button-like">
-                  <i class="fa fa-heart"></i>
-                  <span>Like</span>
-                </button>
-              </form>
-              <div class="addData"></div>
+              <div type="button" class="button button-like" id="liked">
+                <i class="fa fa-heart"></i>
+              </div>
+            </form>
+            <div class="addData"></div>
           </div>
         </div>
-        </div>
       </div>
+    </div>
+    <!--history liked city-->
+    <ul id="favorites"></ul>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
