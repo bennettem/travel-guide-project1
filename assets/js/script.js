@@ -95,15 +95,11 @@ $(function () {
 
   form2.on("submit", handleFormSubmit);
 
-  //save to local storage
-  var storedItem = localStorage.getItem("storedItem");
-  function save() {
-    var item = document.getElementById("input").value;
-    localStorage.setItem("storedItem", item);
-    document.getElementById(savedData).innerHTML = item + " liked";
-  }
-  function get() {
-    localStorage.getItem("storedIem");
-    document.getElementById("openedData").innerHTML = item + " opened";
+  function saveData(city) {
+    const cities = this.getFromData();
+    cities.push(city);
+
+    //add new array
+    localStorage.setItem("cities", JSON.stringify(cities));
   }
 });
