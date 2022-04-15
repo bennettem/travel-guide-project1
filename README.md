@@ -10,7 +10,7 @@ what weather would be better for their trip! When a user clicks search two fetch
 - JavaScript
 - JQuery
 - Foundation CSS Framework
-- -Moment
+- Moment.js
 
 
 ![2022-04-14](https://user-images.githubusercontent.com/98507912/163494903-b2d5a5de-738f-4d36-af3a-1de512e9a790.png)
@@ -18,7 +18,7 @@ what weather would be better for their trip! When a user clicks search two fetch
 
 # Deployed Link 
 
-https://bennettem.github.io/travel-guide-project1/
+https://bennettem.github.io/where2/
 
 # Contributors 
 - Jenna Anderson
