@@ -208,13 +208,6 @@ $(function () {
 
   form2.on("submit", handleFormSubmit);
 
-  // function saveData() {
-  //   //for loop here?
-  //   var input = document.getElementById("input").value;
-  //   document.getElementById("input").value = localStorage.getItem("cityName");
-  //   localStorage.setItem("cityName", input);
-  // }
-
   function saveData() {
     var cities = document.getElementById("input").value;
     localStorage.setItem("list", JSON.stringify(cities));
