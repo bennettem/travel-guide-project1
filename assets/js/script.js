@@ -1,10 +1,11 @@
 $(function () {
   var weatherApiKey = "e0a6afee4ced0e5525c4a7c68c4ed596";
   var geoDBApiKey = "04b70b2d63msh45674d1edc560a3p1163d0jsnfd2052c4c8cc";
-  var fixerApiKey = "3317c4f4904d5e38639dac4386b00621";
-  var exchangeRateApiKey = "8a34dc1b22d9b731f3e0d0da";
+  // var exchangeRateApiKey = "8a34dc1b22d9b731f3e0d0da";
   var form1 = $("#form1");
   var form2 = $("#form2");
+  var liked1 = $("#liked1");
+  var liked2 = $("liked2");
 
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -144,7 +145,7 @@ $(function () {
       method: "GET",
       headers: {
         "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
-        "X-RapidAPI-Key": "04b70b2d63msh45674d1edc560a3p1163d0jsnfd2052c4c8cc",
+        "X-RapidAPI-Key": geoDBApiKey,
       },
     };
 
@@ -207,10 +208,21 @@ $(function () {
 
   form2.on("submit", handleFormSubmit);
 
+  // function saveData() {
+  //   //for loop here?
+  //   var input = document.getElementById("input").value;
+  //   document.getElementById("input").value = localStorage.getItem("cityName");
+  //   localStorage.setItem("cityName", input);
+  // }
+
   function saveData() {
-    var input = document.getElementById("input").value;
-    localStorage.setItem("cityName", input);
-    document.getElementById("input").value = localStorage.getItem("cityName");
+    var cities = document.getElementById("input").value;
+    localStorage.setItem("list", JSON.stringify(cities));
+    var savedCity = JSON.parse(localStorage.getItem("list"));
+
+    localStorage.setItem("list", JSON.stringify(savedCity));
+    var result = JSON.parse(localStorage.getItem("list"));
+    console.log(result);
   }
 
   liked1.on("click", saveData);
