@@ -46,6 +46,7 @@ $(function () {
           .siblings(".add-data-upper")
           .prepend(cityCard);
         $(".dynamicHeader").css("font-family", "'Comfortaa'");
+        $(".card").css("border-radius", "15px");
       })
       .catch((err) => console.error(err));
   }
@@ -69,6 +70,7 @@ $(function () {
         for (i = 0; i < 6; i++) {
           // Create a card for each day
           var dayCard = $("<div>").addClass("card");
+          $(".card").css("border-radius", "15px");
           // Set a header to the card with the date
           var dayCardHeader = $("<div>")
             .addClass("card-divider")
@@ -127,6 +129,7 @@ $(function () {
         var timeEl = $("<p>").text(curTime);
         // Create a card for the time
         var timeCard = $("<div>").addClass("card");
+        $(".card").css("border-radius", "15px");
         // Create a header for the time card
         var timeCardHeader = $("<div>")
           .addClass("card-divider")
@@ -185,6 +188,7 @@ $(function () {
         var exchangeRate = Object.values(currencyData.rates);
         // Create the overall card for the Currency details
         var currencyCard = $("<div>").addClass("card");
+        $(".card").css("border-radius", "15px");
         // Create a header for the currency card
         var currencyCardHeader = $("<div>")
           .addClass("card-divider")
