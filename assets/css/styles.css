@@ -1,3 +1,12 @@
+:root {
+--header-font: 'Comfortaa', cursive;
+--body-font: 'Dosis', sans-serif;
+}
+
+#siteHeaderTitle, #dest1Header, #dest2Header {
+  font-family: var(--header-font);
+}
+
 body {
   text-align: center;
   background-image: url("https://source.unsplash.com/1600x900/?city");
@@ -19,6 +28,8 @@ h4 {
 }
 
 #input {
+  font-family: var(--body-font);
+  font-size: 20px;
   justify-content: center;
   margin: 5px 10px 5px 10px;
   width: 50%;
@@ -39,7 +50,10 @@ h4 {
   border: black;
   border-radius: 25px;
 }
+
 .search-button {
+  font-family: var(--body-font);
+  font-size: 20px;
   border-radius: 25px;
 }
 .button-like {
@@ -112,3 +126,5 @@ h4 {
 .liked:hover span {
   color: #fefefe;
 }
+
+

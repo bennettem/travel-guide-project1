@@ -39,11 +39,13 @@ $(function () {
         var cityLabel = $("<h2>").text(
           cityData[0].name + ", " + cityData[0].country
         );
+        cityLabel.addClass("dynamicHeader");
         cityCardBody.append(cityLabel);
         cityCard.append(cityCardBody);
         $("#" + formId)
           .siblings(".add-data-upper")
           .prepend(cityCard);
+        $(".dynamicHeader").css("font-family", "'Comfortaa'");
       })
       .catch((err) => console.error(err));
   }
@@ -71,8 +73,11 @@ $(function () {
           var dayCardHeader = $("<div>")
             .addClass("card-divider")
             .html(moment().add(i, "d").format("MM/DD/YYYY"));
+            $(".card-divider").css("font-family", "'Comfortaa'");
           // Create a div for the body of the card
           var dayCardBody = $("<div>").addClass("card-section");
+          $(".card-section").css("font-family", "'Dosis'");
+          $(".card-section").css("font-size", "20px");
           // Create an icon for the weather
           var dayWeatherIcon = $("<img>").attr(
             "src",
@@ -135,6 +140,9 @@ $(function () {
         $("#" + formId)
           .siblings(".add-data-upper")
           .append(timeCard);
+        $(".card-divider").css("font-family", "'Comfortaa'");
+        $(".card-section").css("font-family", "'Dosis'");
+        $(".card-section").css("font-size", "20px");
       })
       .catch((err) => console.error(err));
   }
@@ -200,6 +208,9 @@ $(function () {
         $("#" + formId)
           .siblings(".add-data-lower")
           .prepend(currencyCard);
+        $(".card-divider").css("font-family", "'Comfortaa'");
+        $(".card-section").css("font-family", "'Dosis'");
+        $(".card-section").css("font-size", "20px");
       })
       .catch((err) => console.error(err));
   }
