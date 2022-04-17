@@ -1,15 +1,43 @@
-body {
-  text-align: center;
-  background-image: url("https://source.unsplash.com/1600x900/?city");
+:root {
+--header-font: 'Comfortaa', cursive;
+--body-font: 'Dosis', sans-serif;
+--primary: #FF9A26;
+--secondary: #9666FF;
+--tertiary: #185AF2;
 }
 
+#siteHeaderTitle, #dest1Header, #dest2Header {
+  font-family: var(--header-font);
+}
+
+body {
+  text-align: center;
+  height: 3000px;
+  background-image: radial-gradient(circle, rgba(255,154,38,1) 30%, rgba(150,102,255,1) 55%, rgba(24,90,242,1) 100%);
+  background-repeat: no-repeat;
+}
+
+/* site header */
 .hero {
-  background-color: white;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ color:var(--primary);
+}
+
+.fa-3x {
+  position: relative;
+  top: 6px;
+  color: var(--primary);
+} 
+
+/* search/favorite bar */
+#dest1Header, #dest2Header {
+  color: var(--primary);
 }
 
 .city {
-  background-color: black;
-  background-color: rgba(18, 16, 16, 0.5);
+  background-image: url("https://source.unsplash.com/900x675/?city");
   border: black;
   border-radius: 25px;
 }
@@ -19,11 +47,15 @@ h4 {
 }
 
 #input {
+  font-family: var(--body-font);
+  font-size: 20px;
+  color: var(--primary);
   justify-content: center;
   margin: 5px 10px 5px 10px;
   width: 50%;
   float: left;
 }
+
 .grid {
   margin: 80px;
   padding: 30px;
@@ -39,11 +71,26 @@ h4 {
   border: black;
   border-radius: 25px;
 }
+
+/* search button */
 .search-button {
+  font-family: var(--body-font);
+  font-size: 20px;
   border-radius: 25px;
+  background-color: var(--secondary);
 }
+
+.search-button:hover {
+  background-color: var(--primary);
+}
+
+.search-button:focus {
+  background-color: var(--primary);
+}
+
+/* like button */
 .button-like {
-  border: 2px solid #8a8a8a;
+  border: 2px solid var(--secondary);
   background-color: white;
   text-decoration: none;
   padding: 1rem;
@@ -52,7 +99,7 @@ h4 {
   text-align: center;
   display: inline-block;
   border-radius: 3rem;
-  color: #8a8a8a;
+  color: var(--secondary);
   transition: all ease 0.4s;
 }
 
@@ -75,18 +122,18 @@ h4 {
 }
 
 .button-like:hover {
-  border-color: #cc4b37;
+  border-color: var(--primary);
   background-color: transparent;
 }
 
 .button-like:hover .fa,
 .button-like:hover span {
-  color: #cc4b37;
+  color: var(--primary);
 }
 
 .liked {
-  background-color: #cc4b37;
-  border-color: #cc4b37;
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 
 .liked .fa,
@@ -95,7 +142,7 @@ h4 {
 }
 
 .liked:focus {
-  background-color: #cc4b37;
+  background-color: var(--primary);
 }
 
 .liked:focus .fa,
@@ -104,11 +151,13 @@ h4 {
 }
 
 .liked:hover {
-  background-color: #cc4b37;
-  border-color: #cc4b37;
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 
 .liked:hover .fa,
 .liked:hover span {
   color: #fefefe;
 }
+
+

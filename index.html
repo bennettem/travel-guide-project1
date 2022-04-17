@@ -4,22 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.1/dist/css/foundation.min.css"
-      integrity="sha256-1mcRjtAxlSjp6XJBgrBeeCORfBp/ppyX4tsvpQVCcpA= sha384-b5S5X654rX3Wo6z5/hnQ4GBmKuIJKMPwrJXn52ypjztlnDK2w9+9hSMBz/asy9Gw sha512-M1VveR2JGzpgWHb0elGqPTltHK3xbvu3Brgjfg4cg5ZNtyyApxw/45yHYsZ/rCVbfoO5MSZxB241wWq642jLtA=="
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <!--google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Dosis:wght@300&display=swap" rel="stylesheet">
+    <!--foundation-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.1/dist/css/foundation.min.css" integrity="sha256-1mcRjtAxlSjp6XJBgrBeeCORfBp/ppyX4tsvpQVCcpA= sha384-b5S5X654rX3Wo6z5/hnQ4GBmKuIJKMPwrJXn52ypjztlnDK2w9+9hSMBz/asy9Gw sha512-M1VveR2JGzpgWHb0elGqPTltHK3xbvu3Brgjfg4cg5ZNtyyApxw/45yHYsZ/rCVbfoO5MSZxB241wWq642jLtA==" crossorigin="anonymous" />
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <!--custom CSS-->
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <title>Where2</title>
   </head>
   <body>
     <header class="hero">
-      <h1>Where2</h1>
+      <h1 id="siteHeaderTitle">where2</h1>
+      <i class="fa-solid fa-globe fa-3x"></i>
     </header>
     <div class="grid-container">
       <div class="grid-x grid-padding-x grid">
@@ -27,15 +27,15 @@
           <div class="medium-4 cell city1">
             <form id="form1">
               <label>
-                <h4>Destination One</h4>
+                <h4 id="dest1Header">Destination One</h4>
                 <input
                   type="text"
-                  name="cityTwo"
+                  name="cityName"
                   placeholder="Enter a destination"
                   id="input"
                 />
               </label>
-              <button type="submit" class="primary button search-button">
+              <button type="submit" class="button search-button">
                 search
               </button>
               <div type="button" class="button button-like" id="liked1">
@@ -50,7 +50,7 @@
           <div class="medium-4 cell city2">
             <form id="form2">
               <label>
-                <h4>Destination Two</h4>
+                <h4 id="dest2Header">Destination Two</h4>
                 <input
                   type="text"
                   name="cityName"
@@ -58,10 +58,7 @@
                   id="input"
                 />
               </label>
-              <button
-                type="submit"
-                class="primary primary button search-button"
-              >
+              <button type="submit" class="button search-button">
                 search
               </button>
               <div type="button" class="button button-like" id="liked2">
@@ -76,9 +73,11 @@
     </div>
     <!--history liked city-->
     <ul id="favorites"></ul>
-
+    <!--jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--moment.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+    <!--script-->
     <script src="./assets/js/script.js"></script>
   </body>
 </html>

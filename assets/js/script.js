@@ -1,10 +1,11 @@
 $(function () {
   var weatherApiKey = "e0a6afee4ced0e5525c4a7c68c4ed596";
   var geoDBApiKey = "04b70b2d63msh45674d1edc560a3p1163d0jsnfd2052c4c8cc";
+  // var exchangeRateApiKey = "8a34dc1b22d9b731f3e0d0da";
   var form1 = $("#form1");
   var form2 = $("#form2");
   var liked1 = $("#liked1");
-  var liked2 = $("#liked2");
+  var liked2 = $("liked2");
   var cities = [];
 
   function handleFormSubmit(event) {
@@ -39,11 +40,14 @@ $(function () {
         var cityLabel = $("<h2>").text(
           cityData[0].name + ", " + cityData[0].country
         );
+        cityLabel.addClass("dynamicHeader");
         cityCardBody.append(cityLabel);
         cityCard.append(cityCardBody);
         $("#" + formId)
           .siblings(".add-data-upper")
           .prepend(cityCard);
+        $(".dynamicHeader").css("font-family", "'Comfortaa'");
+        $(".card").css("border-radius", "15px");
       })
       .catch((err) => console.error(err));
   }
@@ -67,12 +71,16 @@ $(function () {
         for (i = 0; i < 6; i++) {
           // Create a card for each day
           var dayCard = $("<div>").addClass("card");
+          $(".card").css("border-radius", "15px");
           // Set a header to the card with the date
           var dayCardHeader = $("<div>")
             .addClass("card-divider")
             .html(moment().add(i, "d").format("MM/DD/YYYY"));
+            $(".card-divider").css("font-family", "'Comfortaa'");
           // Create a div for the body of the card
           var dayCardBody = $("<div>").addClass("card-section");
+          $(".card-section").css("font-family", "'Dosis'");
+          $(".card-section").css("font-size", "20px");
           // Create an icon for the weather
           var dayWeatherIcon = $("<img>").attr(
             "src",
@@ -122,6 +130,7 @@ $(function () {
         var timeEl = $("<p>").text(curTime);
         // Create a card for the time
         var timeCard = $("<div>").addClass("card");
+        $(".card").css("border-radius", "15px");
         // Create a header for the time card
         var timeCardHeader = $("<div>")
           .addClass("card-divider")
@@ -135,6 +144,9 @@ $(function () {
         $("#" + formId)
           .siblings(".add-data-upper")
           .append(timeCard);
+        $(".card-divider").css("font-family", "'Comfortaa'");
+        $(".card-section").css("font-family", "'Dosis'");
+        $(".card-section").css("font-size", "20px");
       })
       .catch((err) => console.error(err));
   }
@@ -145,7 +157,7 @@ $(function () {
       method: "GET",
       headers: {
         "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
-        "X-RapidAPI-Key": "04b70b2d63msh45674d1edc560a3p1163d0jsnfd2052c4c8cc",
+        "X-RapidAPI-Key": geoDBApiKey,
       },
     };
 
@@ -177,6 +189,7 @@ $(function () {
         var exchangeRate = Object.values(currencyData.rates);
         // Create the overall card for the Currency details
         var currencyCard = $("<div>").addClass("card");
+        $(".card").css("border-radius", "15px");
         // Create a header for the currency card
         var currencyCardHeader = $("<div>")
           .addClass("card-divider")
@@ -200,6 +213,9 @@ $(function () {
         $("#" + formId)
           .siblings(".add-data-lower")
           .prepend(currencyCard);
+        $(".card-divider").css("font-family", "'Comfortaa'");
+        $(".card-section").css("font-family", "'Dosis'");
+        $(".card-section").css("font-size", "20px");
       })
       .catch((err) => console.error(err));
   }
