@@ -1,12 +1,11 @@
 $(function () {
   var weatherApiKey = "e0a6afee4ced0e5525c4a7c68c4ed596";
   var geoDBApiKey = "04b70b2d63msh45674d1edc560a3p1163d0jsnfd2052c4c8cc";
-  var fixerApiKey = "3317c4f4904d5e38639dac4386b00621";
-  var exchangeRateApiKey = "8a34dc1b22d9b731f3e0d0da";
   var form1 = $("#form1");
   var form2 = $("#form2");
   var liked1 = $("#liked1");
   var liked2 = $("#liked2");
+  var cities = [];
 
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -210,11 +209,13 @@ $(function () {
   form2.on("submit", handleFormSubmit);
 
   function saveData() {
-    var input = document.getElementById("input").value;
-    localStorage.setItem("cityName", input);
-    document.getElementById("input").value = localStorage.getItem("cityName");
+    var newCity = $(this).siblings("label").find("input").val();
+    console.log(newCity);
+    cities.unshift(newCity);
+    console.log(cities);
+    localStorage.setItem("cities", JSON.stringify(cities));
   }
 
   liked1.on("click", saveData);
-  liked2.on("click", saveData2);
+  liked2.on("click", saveData);
 });
