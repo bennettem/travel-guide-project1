@@ -174,7 +174,12 @@ h5 {
 
 @media only screen and (max-width: 815px) {
   body {
-    background-color: white;
-    background-image: none;
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 154, 38, 1) 30%,
+      rgba(150, 102, 255, 1) 55%,
+      rgba(24, 90, 242, 1) 100%
+    );
+    background-repeat: repeat;
   }
 }
