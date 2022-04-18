@@ -90,7 +90,7 @@ $(function () {
           var dayCardHeader = $("<div>")
             .addClass("card-divider")
             .html(moment().add(i, "d").format("MM/DD/YYYY"));
-            $(".card-divider").css("font-family", "'Comfortaa'");
+          $(".card-divider").css("font-family", "'Comfortaa'");
           // Create a div for the body of the card
           var dayCardBody = $("<div>").addClass("card-section");
           $(".card-section").css("font-family", "'Dosis'");
@@ -234,8 +234,6 @@ $(function () {
       .catch((err) => console.error(err));
   }
 
-
-
   // Save data to local storage
   function saveData() {
     // Set value for the city by checking the sibling label and finding the value of the input inside it
@@ -255,7 +253,7 @@ $(function () {
 
   function loadData() {
     // Grab and parse array from local storage
-    var tempCities = JSON.parse(localStorage.getItem('cities'));
+    var tempCities = JSON.parse(localStorage.getItem("cities"));
     // Check if the array is empty and then stop
     if (!tempCities) {
       return;
@@ -263,23 +261,25 @@ $(function () {
     // Set the cities array to the value from localStorage
     cities = tempCities;
     // Clear out the favorites section of any previously generated buttons
-    $('#favorites').empty();
+    $("#favorites").empty();
 
     // Loop through the array to add buttons to the favorites list
-    for (i = (cities.length - 1); i >= 0; i--) {
-      // Create a button for each item in the array 
-      var cityItem = $('<button>')
-          .text(cities[i])
-          .attr('type', 'button')
-          .addClass('button-like')
-          // Add listener to the button to pass in the button value to the search on click
-          .on('click', function(event) {
-              event.preventDefault();
-              // Pass on value of the button and load to form 1
-              getLocationData($(this).text(), "form1");
-          })
+    for (i = cities.length - 1; i >= 0; i--) {
+      // Create a button for each item in the array
+      var cityItem = $("<button>")
+        .text(cities[i])
+        .attr("type", "button")
+        .addClass("button-like")
+        // Add listener to the button to pass in the button value to the search on click
+        .on("click", function (event) {
+          event.preventDefault();
+          // Pass on value of the button and load to form 1
+          getLocationData($(this).text(), "form1");
+        });
       // Add each item button to the beginning of the history div
-      $('#favorites').prepend(cityItem);
+      $("#favorites").prepend(cityItem);
+      // unhides nav and shows once favorite(s) selected
+      $(".faves").show();
     }
   }
 

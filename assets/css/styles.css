@@ -1,38 +1,47 @@
 :root {
---header-font: 'Comfortaa', cursive;
---body-font: 'Dosis', sans-serif;
---primary: #FF9A26;
---secondary: #9666FF;
---tertiary: #185AF2;
+  --header-font: "Comfortaa", cursive;
+  --body-font: "Dosis", sans-serif;
+  --primary: #ff9a26;
+  --secondary: #9666ff;
+  --tertiary: #185af2;
 }
 
-#siteHeaderTitle, #dest1Header, #dest2Header {
+#siteHeaderTitle,
+#dest1Header,
+#dest2Header {
   font-family: var(--header-font);
 }
 
 body {
   text-align: center;
   height: 3000px;
-  background-image: radial-gradient(circle, rgba(255,154,38,1) 30%, rgba(150,102,255,1) 55%, rgba(24,90,242,1) 100%);
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 154, 38, 1) 30%,
+    rgba(150, 102, 255, 1) 55%,
+    rgba(24, 90, 242, 1) 100%
+  );
   background-repeat: no-repeat;
 }
 
 /* site header */
 .hero {
- display: flex;
- flex-wrap: wrap;
- justify-content: center;
- color:var(--primary);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: var(--primary);
+  padding-bottom: 30px;
 }
 
 .fa-3x {
   position: relative;
   top: 6px;
   color: var(--primary);
-} 
+}
 
 /* search/favorite bar */
-#dest1Header, #dest2Header {
+#dest1Header,
+#dest2Header {
   color: var(--primary);
 }
 
@@ -44,6 +53,10 @@ body {
 
 h4 {
   background-color: white;
+}
+
+h5 {
+  color: var(--primary);
 }
 
 #input {
@@ -65,11 +78,10 @@ h4 {
   margin: 3px;
 }
 
-.favorites {
-  background-color: black;
-  background-color: rgba(18, 16, 16, 0.5);
-  border: black;
+.faves {
+  background-color: transparent;
   border-radius: 25px;
+  display: none;
 }
 
 /* search button */
@@ -159,5 +171,3 @@ h4 {
 .liked:hover span {
   color: #fefefe;
 }
-
-
