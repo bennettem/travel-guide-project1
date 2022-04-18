@@ -5,22 +5,29 @@ $(function () {
   var form1 = $("#form1");
   var form2 = $("#form2");
   var liked1 = $("#liked1");
-  var liked2 = $("liked2");
+  var liked2 = $("#liked2");
+  var cities = [];
 
+  // Handle click event from search button
   function handleFormSubmit(event) {
+    // Block default refresh
     event.preventDefault();
+    // Grab the input field value nearest the target
     var city = $(event.target).find("input").val();
+    // Pass both the city value and the form id to the next function so we know where to load the data to in the UI
     getLocationData(city, event.target.id);
   }
 
   // Use the input city and fetch data from openweathermap
   function getLocationData(city, formId) {
+    // Clear out the 2 data display sections from any previous searches
     $("#" + formId)
       .siblings(".add-data-upper")
       .empty();
     $("#" + formId)
       .siblings(".add-data-lower")
       .empty();
+    // Fetch location data from openweathermap
     fetch(
       "https://api.openweathermap.org/geo/1.0/direct?q=" +
         city +
@@ -31,17 +38,25 @@ $(function () {
         return response.json();
       })
       .then(function (cityData) {
-        // executer function to populate forecast weather data cards using the city lat and lon
+        // execture function to get the currency code by passing the country code and the formId
         getCountryData(cityData[0].country, formId);
+        // execute function to populate forecast weather data cards using the city lat and lon and formId
         getFutureWeather(cityData[0].lat, cityData[0].lon, formId);
+        // Create an overall card div for displaying the city name and country abbreviation
         var cityCard = $("<div>").addClass("card");
+        // Create div for the card body
         var cityCardBody = $("<div>").addClass("card-section");
+        // Create an h2 to include the name and country from the api
         var cityLabel = $("<h2>").text(
           cityData[0].name + ", " + cityData[0].country
         );
+        // Add a class to the h2
         cityLabel.addClass("dynamicHeader");
+        // Add the header to the cardbody
         cityCardBody.append(cityLabel);
+        // Add the card body to the card
         cityCard.append(cityCardBody);
+        // Find the upper data section on the ID where the user submitted and add the card
         $("#" + formId)
           .siblings(".add-data-upper")
           .prepend(cityCard);
@@ -219,20 +234,62 @@ $(function () {
       .catch((err) => console.error(err));
   }
 
+
+
+  // Save data to local storage
+  function saveData() {
+    // Set value for the city by checking the sibling label and finding the value of the input inside it
+    var newCity = $(this).siblings("label").find("input").val();
+    // Add the newCity to the beginning of the array
+    cities.unshift(newCity);
+    // Check if too many saved cities are in localstorage
+    if (cities.length > 5) {
+      // If too many then prune the oldest
+      cities.length = 5;
+    }
+    // Add the array to local storage
+    localStorage.setItem("cities", JSON.stringify(cities));
+    // Update favorite buttons
+    loadData();
+  }
+
+  function loadData() {
+    // Grab and parse array from local storage
+    var tempCities = JSON.parse(localStorage.getItem('cities'));
+    // Check if the array is empty and then stop
+    if (!tempCities) {
+      return;
+    }
+    // Set the cities array to the value from localStorage
+    cities = tempCities;
+    // Clear out the favorites section of any previously generated buttons
+    $('#favorites').empty();
+
+    // Loop through the array to add buttons to the favorites list
+    for (i = (cities.length - 1); i >= 0; i--) {
+      // Create a button for each item in the array 
+      var cityItem = $('<button>')
+          .text(cities[i])
+          .attr('type', 'button')
+          .addClass('button-like')
+          // Add listener to the button to pass in the button value to the search on click
+          .on('click', function(event) {
+              event.preventDefault();
+              // Pass on value of the button and load to form 1
+              getLocationData($(this).text(), "form1");
+          })
+      // Add each item button to the beginning of the history div
+      $('#favorites').prepend(cityItem);
+    }
+  }
+
   form1.on("submit", handleFormSubmit);
 
   form2.on("submit", handleFormSubmit);
 
-  function saveData() {
-    var cities = document.getElementById("input").value;
-    localStorage.setItem("list", JSON.stringify(cities));
-    var savedCity = JSON.parse(localStorage.getItem("list"));
-
-    localStorage.setItem("list", JSON.stringify(savedCity));
-    var result = JSON.parse(localStorage.getItem("list"));
-    console.log(result);
-  }
-
   liked1.on("click", saveData);
+
   liked2.on("click", saveData);
+
+  loadData();
 });
